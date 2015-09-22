@@ -18,4 +18,12 @@ version="3.0">
         <servlet-name>LoginAction</servlet-name>
         <url-pattern>/servlet/LoginAction</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchAction</servlet-name>
+        <servlet-class>com.stu.search.action.SearchAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchAction</servlet-name>
+        <url-pattern>/servlet/SearchAction</url-pattern>
+    </servlet-mapping>
 </web-app>

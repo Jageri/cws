@@ -1,9 +1,10 @@
-package com.login.action;
+package com.stu.search.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,17 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-import com.login.dao.LoginDao;
-import com.login.service.LoginService;
+import com.stu.search.dao.*;
+import com.stu.search.service.*;
 
-public class LoginAction extends HttpServlet {
+public class SearchAction extends HttpServlet {
 
-	private LoginService service;
+	private SearchService service;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public LoginAction() {
+	public SearchAction() {
 		super();
 	}
 
@@ -74,27 +75,11 @@ public class LoginAction extends HttpServlet {
 		String path = request.getContextPath();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String id = request.getParameter("id");
-		String psw = request.getParameter("psw");
-
+		String id = request.getParameter("idd");		
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
-		params.add(psw);
-
-		int flag = service.login(params);
-		System.out.println(flag);
-		if (flag == 1) {
-			request.setAttribute("stulog", id);
-			request.setAttribute("stu", id);
-			request.getRequestDispatcher("/stu.jsp").forward(request, response);
-		} else if (flag == 2) {
-			request.setAttribute("teclog", id);
-			request.getRequestDispatcher("/tec.jsp").forward(request, response);
-		} else {			
-			request.setAttribute("loginError", "’ ∫≈ªÚ√‹¬Î¥ÌŒÛ£°");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		}
-
+		List<Map<String, Object>> res = service.Search(params);	
+		System.out.println(res.size());System.out.println(res.size());System.out.println(res.size());
 		out.flush();
 		out.close();
 	}
@@ -107,7 +92,7 @@ public class LoginAction extends HttpServlet {
 	 */
 	public void init() throws ServletException {
 		// Put your code here
-		service = new LoginDao();
+		service = new SearchDao();
 	}
 
 }
