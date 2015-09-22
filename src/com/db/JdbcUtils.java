@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class JdbcUtils {
 
 	// 表示定义数据库的用户名
@@ -36,6 +35,7 @@ public class JdbcUtils {
 			System.out.println("注册驱动成功!!");
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -45,6 +45,7 @@ public class JdbcUtils {
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return connection;
 	}
@@ -241,36 +242,40 @@ public class JdbcUtils {
 		}
 	}
 
-	/**测试代码
+	/**
+	 * 测试代码
+	 * 
 	 * @param args
 	 */
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		JdbcUtils jdbcUtils = new JdbcUtils();
-//		jdbcUtils.getConnection();
-//		// String sql = "insert into userinfo(username,pswd) values(?,?)";
-//		// List<Object> params = new ArrayList<Object>();
-//		// params.add("rose");
-//		// params.add("123");
-//		// try {
-//		// boolean flag = jdbcUtils.updateByPreparedStatement(sql, params);
-//		// System.out.println(flag);
-//		// } catch (SQLException e) {
-//		// // TODO Auto-generated catch block
-//		// e.printStackTrace();
-//		// }
-//		String sql = "select * from userinfo ";
-////		List<Object> params = new ArrayList<Object>();
-////		params.add(1);
-////		try {
-////			List<UserInfo> list = jdbcUtils.findMoreRefResult(sql,
-////					null, UserInfo.class);
-////			System.out.println(list);
-////		} catch (Exception e) {
-////			// TODO: handle exception
-////		} finally {
-////			jdbcUtils.releaseConn();
-////		}
-//	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		JdbcUtils jdbcUtils = new JdbcUtils();
+		jdbcUtils.getConnection();
+		// String sql = "insert into stu(id,psw) values(?,?)";
+		// List<Object> params = new ArrayList<Object>();
+		// params.add("122");
+		// params.add("333");
+		// try {
+		// boolean flag = jdbcUtils.updateByPreparedStatement(sql, params);
+		// System.out.println(flag);
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		String sql = "select * from stu where id=?";
+		List<Object> params = new ArrayList<Object>();
+		String aString="201300301182";
+		params.add(aString);
+		try {
+			Map<String, Object> map=jdbcUtils.findSimpleResult(sql, params);
+			System.out.println(map);
+			if (map == null)
+				System.out.println("...");
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			jdbcUtils.releaseConn();
+		}
+	}
 
 }

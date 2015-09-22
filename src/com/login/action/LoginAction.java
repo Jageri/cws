@@ -75,13 +75,19 @@ public class LoginAction extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		String psw = request.getParameter("psw");
+		
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
 		params.add(psw);
+		
 		int flag = service.login(params);
+		System.out.println(flag);
 		if (flag==1||flag==2) {
 			request.getSession().setAttribute("id", id);
 			response.sendRedirect(path + "/index.jsp");
+		}
+		else {
+			System.out.println("´íÎó");
 		}
 		
 		out.flush();
