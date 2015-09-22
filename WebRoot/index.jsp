@@ -1,26 +1,53 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
+  <TITLE>考勤管理系统</TITLE>
+	
+	<script type="text/javascript">
+ function login(){
+   var th = document.form;
+   if(th.id.value==""){
+      alert("账户不能为空哦");
+      th.username.focus();
+      return ;
+   }
+   if(th.psw.value==""){
+      alert("密码不能为空哦");
+      th.psw.focus();
+      return ;
+   }
+   th.action="<%=path%>/servlet/LoginAction";
+   th.submit();
+ }
+</script>
+  </head><body style="width: 128px; font-size: 18px; font-family: Verdana, Arial, Sans-Serif; text-align: center"><strong>
+    
+  </strong><big>登录页面<br></big></body>
+		<form name="form" action="" method="post"><br>
+  		 
+  			账户
+  			<input name="id" ><br>
+  			
+  			密码
+  			<input name="psw" type="password"><br>
+  				  <a href="javascript:login();"  id="button-1" data-role="button" data-icon="home">登录</a>
+  				 
+  		</form>
+ 
+
+
+
   
-  <body sty>
-    
-  登录页面</body>
+
+  
 </html>
