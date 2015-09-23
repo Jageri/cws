@@ -18,7 +18,7 @@ public class SearchDao implements SearchService {
 	public List<table> Search(List<Object> params) {
 		// TODO Auto-generated method stub
 System.out.println(params.get(0));
-		String sql = "select id,name,cname,cno,tno,ctime,isabsence "
+		String sql = "select id,name,cname,cno,tno,ctime,isabsence,no "
 				+ "from tec natural join course natural join main natural join stu"
 				+ " where tecid=? and cno=? and tno= ? and ctime=? ";
 		try {

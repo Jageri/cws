@@ -82,7 +82,7 @@ public class SearchAction extends HttpServlet {
 		
 		List<table> res = service.Search(params);
 		if (res.size() == 0) {
-			request.setAttribute("resu", "没有缺勤记录！");
+			request.setAttribute("resu", "此课不存在！");
 			request.setAttribute("teclog2", id);
 			request.getRequestDispatcher("/tec.jsp").forward(request, response);
 		}

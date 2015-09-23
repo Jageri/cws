@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import pra.tec.update.dao.*;
 import pra.tec.update.service.*;
-import pra.tec.table.table;
 
 @SuppressWarnings("serial")
 public class UpdateAction extends HttpServlet {
@@ -74,25 +73,18 @@ public class UpdateAction extends HttpServlet {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String id = request.getParameter("upid");
+		String no = request.getParameter("tag");
 		List<Object> params = new ArrayList<Object>();
-		params.add(id);
-		params.add(request.getParameter("upcno"));
-		params.add(request.getParameter("uptno"));
-		params.add(request.getParameter("upctime"));
-
+		params.add(no);
 		boolean res = service.Update(params);
-		if (res) {
+		if (res) {			
 			
-			request.setAttribute("resu", "更改成功！");
+			request.setAttribute("resu", "更改成功！");			
+		} else {			
 			
-		} else {
-			
-			request.setAttribute("resu1", "更改失败！请与管理员联系！");
-			
-		}
-		
-		request.setAttribute("teclog2", id);
+			request.setAttribute("resu", "更改失败！请与管理员联系！");			
+		}		
+		request.setAttribute("teclog2",  request.getParameter("idd"));
 		request.getRequestDispatcher("/tec.jsp").forward(request, response);
 		out.flush();
 		out.close();

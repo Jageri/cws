@@ -48,8 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  }
 </script>
 <script type="text/javascript">
- function update(){
-   var th2 = document.table;
+ function update(v){
+   var th2 = document.form2;
+   th2.tag.value=v;
    th2.action="<%=path%>/servlet/tecUpdateAction";   
    th2.submit();
  }
@@ -72,7 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	List<table> resu2=(List<table>) request.getAttribute("resu1");
 	if(resu2 != null) {
 %>
-<table border="1" > 
+<form name="form2" action="" method="post">
+<table border="1" id="table" > 
         <tr> 
             <th>名字</th>
             <th>课程名</th> 
@@ -85,24 +87,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             for (table table : resu2) { 
         %> 
         <tr> 
-            <td><%=table.getName()%><input type="hidden" name="upid"
-			value=<%=(String)request.getAttribute(  table.getName())%>></td> 
+            <td><%=table.getName()%></td> 
 			
-            <td><%=table.getCname() %><input type="hidden" name="upcname"
-			value=<%=(String)request.getAttribute(  table.getCname())%>></td> 
+            <td><%=table.getCname() %></td> 
 			
-            <td><%=table.getCno()%><input type="hidden" name="upcno"
-			value=<%=(String)request.getAttribute(table.getCno().toString())%>></td> 
+            <td><%=table.getCno()%></td> 
 			
-            <td><%=table.getCtime() %><input type="hidden" name="upctime"
-			value=<%=(String)request.getAttribute(  table.getCtime().toString())%>></td> 
+            <td><%=table.getCtime() %></td> 
 			
-            <td><%=table.getIsabsence() %>
-            <input type="hidden" name="upisa" value=<%=(String)request.getAttribute(table.getIsabsence().toString()) %>>
-            </td> 
+            <td><%=table.getIsabsence() %></td> 
 			
             <td>
-            	<a href="javascript:update()" id="button-1"  >
+            	<a href="javascript:update(<%=table.getNo()%>)"  data-role="button" data-theme="b" >
             		更改考勤信息
             	</a>
             </td>
@@ -117,6 +113,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
       </table>
+      
+      <input type="hidden" name="tag"
+			value="">
+			<%
+			if((String)request.getAttribute("teclog") != null) {
+		%>
+		<input type="hidden" name="idd"
+			value=<%=(String)request.getAttribute("teclog")%>>
+		<%}%>
+		<%
+			if((String)request.getAttribute("teclog2") != null) {
+		%>
+		<input type="hidden" name="idd"
+			value=<%=(String)request.getAttribute("teclog2")%>>
+		<%}%>
+      </form>
 	<form name="form" action="" method="post">
 		<br>
 		<label id="label1">您的工号是：</label>
@@ -154,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				value="" type="text" />
 		</div>
 		<br>
-		<a href="javascript:search();" id="button-1" >
+		<a href="javascript:search();" id="button-1" data-role="button" data-theme="b" >
 			查询此课有无旷课学生
 		</a>
 		<%

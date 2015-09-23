@@ -3,7 +3,6 @@ package pra.tec.update.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.mail.Flags.Flag;
 
 import pra.db.JdbcUtils;
 import pra.tec.update.service.*;
@@ -20,11 +19,11 @@ public class UpdateDao implements UpdateService {
 
 	public boolean Update(List<Object> params) {
 		// TODO Auto-generated method stub
-		System.out.println(params.get(0));
-		String sql = "update main set isabsence = 1 "
-				+ "where id=? and cno=? and tno=? and ctime=?";	
+		String sql = "UPDATE main SET isabsence='0' WHERE no = ? ";
+		
 		boolean flag =false;
 		try {
+			jdbcUtils.getConnection();
 			flag = jdbcUtils.updateByPreparedStatement(sql, params);
 			System.out.println(flag);
 		} catch (SQLException e) {

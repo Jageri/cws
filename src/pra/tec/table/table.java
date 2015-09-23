@@ -1,13 +1,13 @@
 package pra.tec.table;
 
 public class table {
-	
+
 	public table() {
 
 	}
 
 	public table(long id, String name, String cname, Integer cno, Integer tno,
-			Integer ctime, Integer isabsence) {
+			Integer ctime, Integer isabsence,long no) {
 
 		this.id = id;
 		this.name = name;
@@ -16,6 +16,7 @@ public class table {
 		this.tno = tno;
 		this.ctime = ctime;
 		this.isabsence = isabsence;
+		this.no = no;
 	}
 
 	private long id;
@@ -25,15 +26,24 @@ public class table {
 	private Integer tno;
 	private Integer ctime;
 	private Integer isabsence;
-	
-	
+	private long no;
+
+	public void setNo(long no) {
+		this.no = no;
+	}
+
+	public long getNo() {
+		return no;
+	}
 
 	public String getCname() {
 		return cname;
 	}
+
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
+
 	public Integer getTno() {
 
 		return tno;
@@ -85,11 +95,13 @@ public class table {
 	public void setCno(Integer cno) {
 		this.cno = cno;
 	}
+
 	public Integer getIsabsence() {
 		return isabsence;
 	}
+
 	public void setIsabsence(Integer isabsence) {
 		this.isabsence = isabsence;
 	}
-	
+
 }
