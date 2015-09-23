@@ -75,11 +75,26 @@ public class SearchAction extends HttpServlet {
 		String path = request.getContextPath();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String id = request.getParameter("idd");		
+		String id = request.getParameter("idd");
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
-		List<Map<String, Object>> res = service.Search(params);	
-		System.out.println(res.size());System.out.println(res.size());System.out.println(res.size());
+		List<Map<String, Object>> res = service.Search(params);
+		if (res.size() == 0) {
+			request.setAttribute("resu", "恭喜，没有缺勤记录！");
+			request.getRequestDispatcher("/stu.jsp").forward(request, response);
+		}
+		else {
+			String reString=res.toString();
+			reString.replace("cname", "课程名");
+			reString.replace("ctime", "上课时间");
+			System.out.println(reString );
+			request.setAttribute("resu", "缺勤记录为"+reString);
+			request.setAttribute("stulog2", id);
+			request.getRequestDispatcher("/stu.jsp").forward(request, response);
+		}
+		System.out.println(res.size());
+		System.out.println(res.size());
+		System.out.println(res.size());
 		out.flush();
 		out.close();
 	}

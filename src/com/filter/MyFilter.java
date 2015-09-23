@@ -32,8 +32,8 @@ public class MyFilter implements Filter {
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 		httpServletRequest.setCharacterEncoding("utf-8");
 		httpServletResponse.setCharacterEncoding("utf-8");
-		String username = (String)httpServletRequest.getSession().getAttribute("username");
-		if (username==null) {
+		String id = (String)httpServletRequest.getSession().getAttribute("id");
+		if (id==null) {
 			httpServletResponse.sendRedirect(path + "/index.jsp");
 		}
 		chain.doFilter(httpServletRequest, httpServletResponse);

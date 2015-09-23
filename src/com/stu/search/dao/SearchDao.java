@@ -19,7 +19,8 @@ public class SearchDao implements SearchService {
 	public List<Map<String, Object>> Search(List<Object> params) {
 		// TODO Auto-generated method stub
 
-		String sql = "select * from stu natural join main"
+		String sql = "select cname ,ctime  "
+				+ "from stu natural join main natural join course"
 				+ " where id=? and " + "isabsence=1";
 
 		try {

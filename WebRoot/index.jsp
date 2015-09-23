@@ -36,7 +36,7 @@ String path = request.getContextPath();
 %>
 	<script type="text/javascript" language="javascript">
 		alert("<%=errorInfo%>");                                            // 弹出错误信息
-		window.location='/cws/index.jsp' ;                            // 跳转到登录界面
+		                    
 	</script>	
 <%
 	}

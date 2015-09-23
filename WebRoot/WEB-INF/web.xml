@@ -26,4 +26,13 @@ version="3.0">
         <servlet-name>SearchAction</servlet-name>
         <url-pattern>/servlet/SearchAction</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>MyFilter</filter-name>
+        <filter-class>com.filter.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyFilter</filter-name>
+        <url-pattern>/stu.jsp</url-pattern>
+        <url-pattern>/tec.jsp</url-pattern>
+    </filter-mapping>
 </web-app>
