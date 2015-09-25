@@ -1,6 +1,10 @@
 package com.login.dao;
 
+<<<<<<< HEAD:src/com/login/dao/LoginDao.java
 import java.util.ArrayList;
+=======
+
+>>>>>>> parent of 277f6da... 1.0.3:src/pra/login/dao/LoginDao.java
 import java.util.List;
 import java.util.Map;
 

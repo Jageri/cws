@@ -1,4 +1,4 @@
-package com.login.action;
+package pra.tec.search.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,17 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.login.dao.LoginDao;
-import com.login.service.LoginService;
+import pra.tec.search.dao.*;
+import pra.tec.search.service.*;
+import pra.tec.table.table;
+@SuppressWarnings("serial")
+public class SearchAction extends HttpServlet {
 
-public class LoginAction extends HttpServlet {
-
-	private LoginService service;
+	private SearchService service;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public LoginAction() {
+	public SearchAction() {
 		super();
 	}
 
@@ -70,30 +71,29 @@ public class LoginAction extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String path = request.getContextPath();
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String id = request.getParameter("id");
-		String psw = request.getParameter("psw");
-<<<<<<< HEAD:src/com/login/action/LoginAction.java
-		
-=======
-
->>>>>>> parent of 277f6da... 1.0.3:src/pra/login/action/LoginAction.java
+		String id = request.getParameter("idd");
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
-		params.add(psw);
+		params.add(request.getParameter("cno"));
+		params.add(request.getParameter("tno"));
+		params.add(request.getParameter("ctime"));
 		
-		int flag = service.login(params);
-		System.out.println(flag);
-		if (flag==1||flag==2) {
-			request.getSession().setAttribute("id", id);
-			response.sendRedirect(path + "/index.jsp");
+		List<table> res = service.Search(params);
+		if (res.size() == 0) {
+			request.setAttribute("resu", "´Ë¿Î²»´æÔÚ£¡");
+			request.setAttribute("teclog2", id);
+			request.getRequestDispatcher("/tec.jsp").forward(request, response);
 		}
 		else {
-			System.out.println("´íÎó");
+			
+			request.setAttribute("resu1", res);
+			request.setAttribute("teclog2", id);
+			request.getRequestDispatcher("/tec.jsp").forward(request, response);
+			
 		}
-		
+	
 		out.flush();
 		out.close();
 	}
@@ -106,7 +106,7 @@ public class LoginAction extends HttpServlet {
 	 */
 	public void init() throws ServletException {
 		// Put your code here
-		service = new LoginDao();
+		service = new SearchDao();
 	}
 
 }
