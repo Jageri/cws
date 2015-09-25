@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.jaxb_ri_2.2">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="WEB-INF/lib"/>
@@ -31,6 +26,11 @@
 			<attribute name="owner.project.facets" value="jst.jaxrs"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="libs/ant-151-20011026.jar"/>
 	<classpathentry kind="lib" path="libs/commons-beanutils-1.7.jar"/>
 	<classpathentry kind="lib" path="libs/commons-collections.jar"/>
@@ -49,12 +49,12 @@
 	<classpathentry kind="lib" path="libs/jaxp.jar"/>
 	<classpathentry kind="lib" path="libs/json-lib-2.2.2-jdk15.jar"/>
 	<classpathentry kind="lib" path="libs/kxml2-2.2.2.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.12-bin.jar"/>
 	<classpathentry kind="lib" path="libs/mysql-connector-java.jar"/>
 	<classpathentry kind="lib" path="libs/optional-151-20011026.jar"/>
 	<classpathentry kind="lib" path="libs/pull-parser-2.1.10.jar"/>
 	<classpathentry kind="lib" path="libs/servlet-api-2.4.jar"/>
 	<classpathentry kind="lib" path="libs/servlet-api-2.5.jar"/>
-	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.12-bin.jar"/>
-	<classpathentry kind="lib" path="libs/mysql-connector-java-5.0.8.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

@@ -11,11 +11,44 @@ version="3.0">
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>LoginAction</servlet-name>
-    <servlet-class>com.login.action.LoginAction</servlet-class>
+    <servlet-class>pra.login.action.LoginAction</servlet-class>
   </servlet>
     
     <servlet-mapping>
         <servlet-name>LoginAction</servlet-name>
         <url-pattern>/servlet/LoginAction</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchAction</servlet-name>
+        <servlet-class>pra.stu.search.action.SearchAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchAction</servlet-name>
+        <url-pattern>/servlet/SearchAction</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>MyFilter</filter-name>
+        <filter-class>pra.filter.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyFilter</filter-name>
+        <url-pattern>/stu.jsp</url-pattern>
+        <url-pattern>/tec.jsp</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>tecSearchAction</servlet-name>
+        <servlet-class>pra.tec.search.action.SearchAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tecSearchAction</servlet-name>
+        <url-pattern>/servlet/tecSearchAction</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>tecUpdateAction</servlet-name>
+        <servlet-class>pra.tec.update.action.UpdateAction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>tecUpdateAction</servlet-name>
+        <url-pattern>/servlet/tecUpdateAction</url-pattern>
     </servlet-mapping>
 </web-app>

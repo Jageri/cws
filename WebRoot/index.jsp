@@ -30,6 +30,17 @@ String path = request.getContextPath();
    th.submit();
  }
 </script>
+<%
+	String errorInfo = (String)request.getAttribute("loginError");         // 获取错误属性
+	if(errorInfo != null) {
+%>
+	<script type="text/javascript" language="javascript">
+		alert("<%=errorInfo%>");                                            // 弹出错误信息
+		                    
+	</script>	
+<%
+	}
+%>
   </head><body style="width: 128px; font-size: 18px; font-family: Verdana, Arial, Sans-Serif; text-align: center"><strong>
     
   </strong><big>登录页面<br></big></body>
@@ -43,11 +54,6 @@ String path = request.getContextPath();
   				  <a href="javascript:login();"  id="button-1" data-role="button" data-icon="home">登录</a>
   				 
   		</form>
- 
-
-
-
-  
-
+  	
   
 </html>
