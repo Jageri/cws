@@ -73,9 +73,9 @@ public class LoginAction extends HttpServlet {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		
 		String id = request.getParameter("id");
 		String psw = request.getParameter("psw");
-
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
 		params.add(psw);

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import pra.tec.search.dao.*;
 import pra.tec.search.service.*;
 import pra.tec.table.table;
+
 @SuppressWarnings("serial")
 public class SearchAction extends HttpServlet {
 
@@ -73,6 +74,7 @@ public class SearchAction extends HttpServlet {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		
 		String id = request.getParameter("idd");
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
