@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.login.dao.LoginDao;
 import com.login.service.LoginService;
 
+@SuppressWarnings("serial")
 public class LoginAction extends HttpServlet {
 
 	private LoginService service;
@@ -75,11 +76,7 @@ public class LoginAction extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		String psw = request.getParameter("psw");
-<<<<<<< HEAD:src/com/login/action/LoginAction.java
-		
-=======
 
->>>>>>> parent of 277f6da... 1.0.3:src/pra/login/action/LoginAction.java
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
 		params.add(psw);
